@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Upload file{% endblock %}
+
+{% block body %}
+    <style>
+        .wrapper {
+            margin-right: auto; /* 1 */
+            margin-left:  auto; /* 1 */
+
+            max-width: 960px; /* 2 */
+
+            padding-right: 10px; /* 3 */
+            padding-left:  10px; /* 3 */
+        }
+
+        form{
+            padding-top: 50px;
+        }
+
+    </style>
+    <div class="wrapper">
+        <form action="{{ path('do-upload') }}" method="post" enctype="multipart/form-data">
+
+            <input type="hidden" name="token" value="{{ csrf_token('upload') }}" />
+
+            <div>
+                <label for="myfile">File to upload:</label>
+                <input class="form-control" type="file" name="myfile" id="myfile">
+            </div><br>
+
+            <button class="btn btn" type="submit">Send</button>
+
+        </form>
+    </div>
+{% endblock %}
